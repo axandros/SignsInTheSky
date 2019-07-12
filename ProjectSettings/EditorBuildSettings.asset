@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: a44436ca0de9ea049a79ae387cdb12b4
+  - enabled: 1
+    path: Assets/Scenes/Aquarius.unity
+    guid: f0addb39bf133c74a870265c6720cab8
+  - enabled: 1
+    path: Assets/Scenes/Aries.unity
+    guid: 8a233f1887b6dbb46a23bb64ef418801
+  - enabled: 1
+    path: Assets/Scenes/Cancer.unity
+    guid: 0ed9341adf1070f4a976cb42bbb6c050
+  - enabled: 1
+    path: Assets/Scenes/Capricorn.unity
+    guid: 3ba53a11cdd99c9499e0fd5caf104485
+  - enabled: 1
+    path: Assets/Scenes/Gemini.unity
+    guid: 886076d421f78b540a1051d22c466896
+  - enabled: 1
+    path: Assets/Scenes/Leo.unity
+    guid: 8068db39c8646cd48be3b47cb8cb7316
+  - enabled: 1
+    path: Assets/Scenes/Libra.unity
+    guid: dd6c34973a0ea4b47a79b450c549fb06
+  - enabled: 1
+    path: Assets/Scenes/Picese.unity
+    guid: d7c8ec187d87cfc4093acdb0577267c6
+  - enabled: 1
+    path: Assets/Scenes/Sagittarius.unity
+    guid: 53aee4fe6c51ffc498a06958cc641784
+  - enabled: 1
+    path: Assets/Scenes/Scorpio.unity
+    guid: 726802bf5fb99704eb4a332e8b47acec
+  - enabled: 1
+    path: Assets/Scenes/Taurus.unity
+    guid: 07a0852041b1fe1458e72429609fdffa
+  - enabled: 1
+    path: Assets/Scenes/Virgo.unity
+    guid: f59ea45ea79fb2548828b40da5950fa0
+  m_configObjects: {}
