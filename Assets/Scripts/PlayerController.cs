@@ -40,9 +40,21 @@ public class PlayerController : MonoBehaviour
             SelectUnderCursor();
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonUp(1))
         {
-            ClearUnderCursor();
+            //ClearUnderCursor();
+            
+               // Debug.Log("Right Click");
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+
+                if (hit.transform != null)
+                {
+                   //Debug.Log("Test");
+                    GameObject obj = hit.collider.gameObject;
+                    Edge e = obj.GetComponentInParent<Edge>();
+                    if (e) { e.Remove(); }
+                }
         }
 
         // Camera Controls

@@ -51,16 +51,20 @@ public class NodeMapper : MonoBehaviour
         // Fill in needed components
         lr = GetComponent<LineRendererToPoint>();
         neighbors = new List<NodeMapper>();
-        
-        for(int i = 0; i < Adjacent.Count; i++)
+
+        if (Adjacent != null)
         {
-            NodeMapper nm = Adjacent[i].GetComponent<NodeMapper>();
-            if (nm != null) {
-                neighbors.Add(nm);
-            }
-            if (CorrectConnection[i])
+            for (int i = 0; i <= Adjacent.Count; i++)
             {
-                correctCount++;
+                NodeMapper nm = Adjacent[i].GetComponent<NodeMapper>();
+                if (nm != null)
+                {
+                    neighbors.Add(nm);
+                }
+                if (CorrectConnection[i])
+                {
+                    correctCount++;
+                }
             }
         }
         if(SelectSprite != null)
