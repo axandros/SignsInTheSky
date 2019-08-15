@@ -5,6 +5,7 @@ using UnityEngine;
 public class LineRendererToPoint : MonoBehaviour
 {
     LineRenderer lr = null;
+    BoxCollider2D bc = null;
 
     [SerializeField]
     private Vector3 destination = Vector3.zero;
@@ -22,6 +23,7 @@ public class LineRendererToPoint : MonoBehaviour
         {
             UpdateDestination(destination);
         }
+        
     }
 
     private void Update()
@@ -48,5 +50,5 @@ public class LineRendererToPoint : MonoBehaviour
         lr.SetPosition(0, transform.position);
         lr.SetPosition(1, transform.position);
     }
-
+    
 }

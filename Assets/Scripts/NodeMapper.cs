@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,12 +7,18 @@ public class NodeMapper : MonoBehaviour
 {
     //Connection Variables
     //TODO: Consolidate Adjacent and Correct to pair/tuple.  Does this work in the editor?
-    [SerializeField]
+    //[SerializeField]
     private List<GameObject> Adjacent = null;
-    [SerializeField]
+    //[SerializeField]
     private List<bool> CorrectConnection = null;
 
+    //[SerializeField]
+    //private List<NodePair> AdjacencyList = null;
+
     private List<NodeMapper> neighbors = null;
+
+    [SerializeField]
+    private List<NodeMapper> CorrectConnect = null;
 
     private int correctCount = 0;
     private bool IsLeaf
@@ -38,11 +45,10 @@ public class NodeMapper : MonoBehaviour
     [SerializeField]
     private Color selectColor = new Color(1-255/255,1-243/255,1-143/255, 1.0f);
     
-    
-
     // Start is called before the first frame update
     void Start()
     {
+        // Fill in needed components
         lr = GetComponent<LineRendererToPoint>();
         neighbors = new List<NodeMapper>();
         
@@ -65,20 +71,25 @@ public class NodeMapper : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ConnectTo(NodeMapper nm)
     {
+        /*
         int index = neighbors.IndexOf(nm);
         if (index > -1)
         {
             connection = index;
             //Debug.Log(nm.transform.position);
             lr.UpdateDestination(nm.transform.position);
+        }
+        */
+
+
+        if (nm != null)
+        {
+            // Create New Line Renderer
+            LineRenderer newLR = CreateLineRenderer();
+            // Give LR Reference to connecting node
+            nm.AcceptConnection(nm,newLR);
         }
     }
 
@@ -88,8 +99,11 @@ public class NodeMapper : MonoBehaviour
         lr.ClearLineRender();
     }
 
-    // Getters
-
+    /*
+     * Getters / Queries
+     */
+    // IsConnectedTo - Is there an active connection between this node and another given node.
+    // Optional out parameter will say if a connection is possible.
     public bool IsConnectedTo(NodeMapper nm)
     {
         bool opt = false;
@@ -123,6 +137,7 @@ public class NodeMapper : MonoBehaviour
     
     public bool IsCorrectConnections()
     {
+        //TODO: Change to new System
         //Readout();
         bool ret = false;
         if(connection == -1)
@@ -155,6 +170,9 @@ public class NodeMapper : MonoBehaviour
         Debug.Log(transform.name + ": " + IsEmpty + " " + connection + " " + (connection!=-1?(CorrectConnection[connection]?"true":"false"):"null"));
     }
 
+    /*
+     * 'Setters'
+     * */
     public void Select()
     {
         if (SelectSprite != null)
@@ -172,11 +190,14 @@ public class NodeMapper : MonoBehaviour
     }
 
 
-    public void CreateLineRenderer()
+    public LineRenderer CreateLineRenderer()
     {
         LineRenderer newLR = Instantiate<LineRenderer>(baseLR, this.transform);
         Lines.Add(newLR);
+        return newLR;
     }
 
-    //public AcceptConnection(NodeMapper nm){}
+    public void AcceptConnection(NodeMapper nm, LineRenderer newLR)
+    {
+    }
 }
